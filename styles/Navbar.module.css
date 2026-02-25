@@ -1,0 +1,103 @@
+/* Navbar.module.css */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  transition: background .3s, border-color .3s;
+}
+.nav.scrolled {
+  background: rgba(13,13,13,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+}
+.logoDot { color: var(--cyan); }
+
+/* Desktop links */
+.links {
+  display: flex;
+  list-style: none;
+  gap: 0;
+}
+.links a {
+  display: block;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-3);
+  border-radius: 8px;
+  transition: color .2s, background .2s;
+}
+.links a:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+.links a.active { color: var(--cyan); }
+
+/* Hamburger */
+.ham {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.ham span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: all .25s;
+}
+.ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity: 0; }
+.ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile drawer */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  background: linear-gradient(135deg, #0f1923 0%, #0d0d0d 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translateY(-100%);
+  transition: transform .35s var(--ease);
+}
+.drawer.open { transform: none; }
+.drawer a {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--gray-3);
+  padding: 12px 40px;
+  transition: color .2s;
+}
+.drawer a:hover, .drawer a.active { color: var(--cyan); }
+
+@media (max-width: 700px) {
+  .links { display: none; }
+  .ham { display: flex; }
+}
